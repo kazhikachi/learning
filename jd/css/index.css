@@ -1,0 +1,912 @@
+*{
+	margin: 0;/*外边距*/
+	padding: 0;/*内边距*/
+}
+
+a{
+	text-decoration: none;/*a标签的下划线*/
+}
+
+a:link,a:visited{
+	color: #5e5e5e;
+}
+
+@font-face{
+	font-family: "iconfont";
+	src:url('../image/font/iconfont.eot');
+	src:url('../image/font/iconfont.eot') format('embedded-opentye'),
+	url('../image/font/iconfont.woff') format('woff'),
+	url('../image/font/iconfont.ttf') format('turetype'),
+	url('../image/font/iconfont.svg#iconfont') format('svg');
+}/**1.这是兼容性写法2.双引号单引号区别：实际使用无区别，建议内部单引号，外部双引号**/
+
+ul,ol,li{
+	list-style-type: none;/*清除圆点*/
+}
+
+.clear{
+	clear: both;/*清除浮动*/
+}
+
+body{
+	background-color: #f6f6f6;
+	color: #666;
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+/*头部开始*/
+
+.head-wp{
+	width: 100%;
+	background-color: #e3e4e5;
+	border-bottom:1px solid #ddd;/*底部厚度1px，边框颜色#ddd*/
+	height: 30px;	
+}
+
+.head{
+	width: 1190px;
+	height: 100%;
+	margin: 0 auto;
+	/*background-color: red;*/
+	line-height: 30px;
+	color:#999;
+}
+
+.head-left{
+	float: left;
+	margin-left: 200px;
+}
+
+.head-right{
+	float: right;
+}
+.head-right ul li span a{
+	color: #999;
+}
+
+.head-right ul li span a:hover{
+	color:#C81623;
+}
+
+
+.location{
+	width: 10px;
+	height: 14px;
+	background-image: url('../image/location.png');
+	display: inline-block;
+	background-size: 100% 100%;
+	position: relative;
+	top:3px;
+	margin-right: 3px;
+}/*地标图片格式*/
+
+.head-right>ul>li{
+	float:left;
+	padding:0 15px;
+	position: relative;
+}/*右边文字左浮动 10像素的偏移*/
+
+.head-right>ul>li.arrow-wp{
+	padding-right: 20px;
+}
+
+.head-right>ul>li span:hover,.red-txt:hover{
+	color:#C81623;
+	/*cursor:pointer;作用：光标hover时变成手掌*/
+}
+
+.head-right>ul>li:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right:0;
+	width: 1px;
+	height: 10px;
+	background-color: #ccc;
+	margin-top: -5px;
+}
+
+.head-right>ul>li.last-item:after {
+    content:"";
+   position:static;
+}
+
+.red-txt{
+	color:#f10215 !important;
+}
+
+.arrow{
+	width: 0;
+	height: 0;
+	border: 5px solid transparent;
+	border-top-color: #999;
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	margin-top: -1px;
+}
+
+.arrow-top{
+	border-top-color: #e3e4e5;
+	margin-top: -2px;
+	z-index: 3;/**优先级、层叠顺序**/
+}
+
+/*导航栏样式*/
+.nav{
+	width: 1190px;
+	height: 140px;
+	margin: 0 auto;
+/*	background-color: red;*/
+	position: relative;
+}
+
+.nav-left{
+	float: left;
+	position: "relative";
+	height: 170px;
+	width: 190px;
+}
+
+.nav-left>h1>a{
+	width: 190px;
+	height: 170px;
+	display: block;
+	background-image: url('../image/logo.v3.jpg');
+	top:-30px;
+	position: absolute;
+}	
+
+.nav-right{
+	float: left;
+}
+
+.search{
+	margin: 25px 0 0 130px;
+}
+
+.search-wp{
+	width: 550px;
+	height: 35px;
+	float: left;
+	position: relative;/*父元素relative 子元素absolute*/
+
+}
+
+.search-wp>input{
+	width:  498px;
+	height: 33px;
+	border: 1px solid #f10215;
+	outline: none;
+	text-indent: 5px;
+	font-size: 16px;
+	color: rgb(153,153,153);
+	float: left;
+}
+
+.search-img{
+	width: 50px;
+	height: 35px;
+	float: right;
+	background:#f10215 url('../image/search.jpg') no-repeat center center;
+}
+
+.camer{
+	width: 19px;
+	height: 15px;
+	background: url('../image/sprite-photo-search.png');
+	position: absolute;
+	top: 50%;
+	margin-top: -7px;
+	right: 65px;
+}
+
+.camer:hover{
+	cursor: pointer;
+	background-position: -30px 0;/*相对于第一张图的位置进行定位*/
+
+}
+.shopping{
+	float: left;
+	width: 188px;
+	height: 33px;
+	background-color: #fff;
+	border: 1px solid #e3e4e5;
+	line-height: 33px;
+	text-align: center;
+	color: #f10214;
+	position: relative;
+	margin-left: 30px;
+}
+
+.shopping-img{
+	width: 19px;
+	height: 19px;
+	background-image: url('../image/shopping.jpg');
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	left: 40px;
+}
+
+.count{
+	position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #f10215;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 14px;
+    color: #fff;
+    top: 5px;
+    font-style: normal;
+    right: 45px;
+
+}
+
+.shopping-hide{
+	width: 308px;
+	position: absolute;
+	border: 1px solid #ccc;
+	top: 34px;
+	left: -121px;
+	height:  69px;
+	background-color: #fff;
+	display: none;
+}
+
+.shopping:hover .shopping-hide{
+	display: block;
+}
+
+.spacer{
+	width: 188px;
+	background-color: #fff;
+	height: 2px;
+	left: 120px;
+	top: -2px;
+	position: absolute;
+
+}
+
+.search>ul{
+	margin-top: 10px;
+}
+
+.search>ul>li{
+	float: left;
+	margin-right: 10px;
+}
+
+.search>ul>li>a{
+	color: #999;
+}
+
+.search>ul>li>a:hover,.txt-nav>ul>li>a:hover{
+	color:#c81623 !important;
+}
+
+.txt-nav{
+	margin-left: 10px;
+
+}
+
+.txt-nav>ul>li{
+	float: left;
+	margin-top: 25px;
+	margin-left: 30px;
+}
+
+.txt-nav>ul>li>a{
+	font-weight: bold;
+	font-size: 16px;
+	color: #555;
+}
+
+.line{
+	width: 1px;
+	height: 10px;
+	background-color: #ccc;
+	margin: 36px -10px 0 20px !important;
+}
+
+.fupin{
+	position: absolute;
+	right: 0;
+	bottom: 5px;
+}
+
+.erwm{
+	position: absolute;
+	right: 0;
+	top: -2px;
+}
+
+.banner{
+	width: 1190px;
+	height: 480px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+
+.banner-right{
+	position: absolute;
+	top: 0;
+	width: 190px;
+	right: 0;
+	height: 100%;
+	background-color: #fff;
+}
+.banner-center{
+	height: 100%;
+	position: relative;
+	margin: 0 200px;
+}
+/**以下是轮播图样式**/
+
+.swiper{
+	width: 790px;
+	height: 340px;
+	overflow: hidden;
+	position: relative;
+}
+
+.banner-slide{
+	width: 790px;
+	height: 340px;
+	float: left;
+	background-repeat: no-repeat;
+	display: none;
+}
+
+.slide-active{
+	display: block;
+}
+
+.slide1{
+	background-image: url('../image/banner-1.jpg');
+}
+.slide2{
+	background-image: url('../image/banner-2.jpg');
+}
+.slide3{
+	background-image: url('../image/banner-3.jpg');
+}
+.slide4{
+	background-image: url('../image/banner-4.jpg');
+}
+
+.button{
+		/**有background-position时，
+	width和height隶属于position(即为定位精灵图的具体图像大小)，
+	不再是定位具体位置。**/
+	position: absolute;
+	width: 40px;
+	height: 80px;
+	left: 10px;
+	background: url('../image/prevnext.png') center center no-repeat;
+	
+	/**zoom:1.5;      放大1.5倍*/   
+	/*transform: scale(1.5);也是放大1.5，不知道为什么不管用*/
+	top: 50%;
+	transform: rotate(180deg); 
+	margin-top:-40px; 
+
+	/*transform: rotate(0deg); */   /**旋转0度**/
+	opacity: 0.3;/*透明度0.3*/
+	filter:alpha(opacity=30);/*ie浏览器的兼容设置。*/
+}
+
+
+.button:hover{
+/*	background-color: #fff;*/
+	opacity: 0.8;/*透明度0.8*/
+	filter:alpha(opacity=80);/*ie浏览器的兼容设置。*/
+}
+
+
+.next{
+	left: auto;
+	right: 10px;
+	transform: rotate(0deg);
+}
+
+
+.dots{
+	position: absolute;
+	right:24px;
+	bottom: 150px;
+	line-height: 12px;   /**行间距(行高，即每行的高度)**/
+
+
+}
+.dots span{
+	display: inline-block;   /**显示在一行**/
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: rgba(7,17,27,0.4);
+	/**rgba代表Red、Green、Blue和Alpha(透明度)**/
+
+	box-shadow: 0 0 0 2px rgba(255,255,255,0.8) inset;
+	cursor:pointer;
+}
+
+.dots span.active{
+	/**因为active为激活时替代原dots的属性，所以要标明是dots下的span下的active（或直接写span.active)**/
+	background-color: #fff;
+	box-shadow: 0 0 0 2px rgba(7,17,27,0.4) inset
+
+}
+
+
+
+
+
+
+/**以下是圆点样式**/
+
+.swiper>ul{
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -81px;
+	background-color: hsla(0,0%,100%,.3);
+	padding:4px 8px;
+	border-radius: 12px;
+}
+
+.swiper>ul>li{
+	float: left;
+	height: 12px;
+	width: 12px;
+	background-color: #fff;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.swiper>ul>li.last-li{
+	margin-right:0;
+}
+
+.small-banner{
+	margin-top:10px;
+}
+
+.small-banner-left{
+	float: left;
+}
+
+.small-banner-right{
+	float: right;
+}
+
+
+/**主菜单样式**/
+.banner-left{
+	position: absolute;
+	top: 0;
+	width: 990px;
+	left: 0;
+	height: 448px;
+	padding: 16px 0;
+	
+	
+	
+}
+
+.menu-box{
+	position: absolute;
+	top: 0;
+	width: 190px;
+	left: 0;
+	height: 474px;
+	padding-top: 6px;
+	background-color:rgba(110,101,104,0.5);
+	
+	
+}
+
+.menu-item{
+	height: 64px;
+	line-height: 66px;
+	cursor:pointer;
+	padding: 0 24px;
+
+}
+
+.menu-item a{
+	display: block;
+	color: #fff;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	height: 63px;
+	padding: 0 8px;
+	position: relative;
+}
+
+.menu-item:last-child a{
+	border-bottom: none;
+	/**css3新功能：伪类选择器。节省了定义最后一项的不同样式**/
+}
+
+.menu-item i{
+	position: absolute;
+	right: 8px;
+	top: 2px;
+	color: rgba(255,255,255,0.5);
+	font-size: 24px;
+	font-family:"iconfont";
+}
+ 
+
+
+
+
+
+/*
+.banner-left>ul>li>a{
+	color:#fff;
+}
+字体颜色必须指定a标签，指定li时无效
+*/
+
+
+/**子菜单样式**/
+
+.sub-menu{
+	width: 798px;
+    position: absolute;
+    border: 1px solid #ccc;
+    top: 0px;
+    left: 190px;
+    height: 480px;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 3;
+    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1);/*水平方向0，垂直方向4，模糊距离8，阴影尺寸0*/
+}
+
+.inner-box{
+	width: 100%;
+	height: 100%;
+	background: url('../image/fe.png') no-repeat right bottom ;
+	z-index: 0;
+	display: none;
+}
+
+.sub-inner-box{
+	width: 652px;
+	margin-left: 40px;
+	overflow: hidden;
+}
+
+.title{
+	font-size: 16px;
+	color: #f01414;
+	line-height: 16px;
+	font-weight: bold;
+	margin:28px 0 30px 0;
+}
+
+.sub-row{
+	margin-bottom: 25px;
+}
+
+.bold{
+	font-weight: 700;
+}
+.mr10{
+	margin-right: 10px;
+}
+
+.ml10{
+	margin-left: 10px;
+}
+
+.hide{
+	display: none;
+}
+
+
+
+
+
+
+
+
+.user{
+	width: 160px;
+	height: 105px;
+	padding: 0 15px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.user-img{
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+
+.user-img>a>img{
+	width: 40px;
+	height: 40px;
+	background-size: 100% 100%;
+	border-radius:50%;
+}
+
+.user-reg{
+	float: left;
+	margin-left: 5px;
+
+}
+.user-info{
+	margin-top: 20px;
+}
+
+p.reg{
+	margin-top:5px;
+}
+
+p.reg>a{
+	color: #666;
+}
+
+.user-btn>button{
+	width: 74px;
+	height: 24px;
+	border:2px solid #e01222;
+	font-size: 12px;
+	background-color: #fff;
+	color: #e01222;
+	margin-top: 9px;
+}
+.user-btn>button:hover{
+	background-color: #e01222;
+	color: #fff;
+	cursor:pointer;
+
+}
+
+.user-btn>button.new-person{
+	float: left;
+}
+
+.user-btn>button.plus{
+	float: right;
+}
+
+.cuxiao{
+	padding: 15px;
+	width: 160px;
+	line-height: 14px;	
+}
+
+.cuxiao-nav{
+	border-bottom: 1px solid #e6e6e6;
+	padding-bottom: 5px;
+	position: relative;
+}
+
+.cuxiao-nav>a{
+	font-size: 14px;
+	color: #333;
+	line-height: 14px;
+
+}
+
+.more{
+	float: right;
+}
+
+.red-line-hide{
+	position: absolute;
+	width: 28px;
+	height: 2px;
+	background-color: #db192b;
+	bottom: 0;
+	left: 0;
+}
+
+
+.vertical-line{
+	width: 1px;
+	height: 10px;
+	background-color: #dfe0e1;
+	position: absolute;
+	left: 40px;
+    top: 1px;
+}
+
+.cuxiao-tab {
+    margin-right:20px;
+}
+
+.cuxiao>ul>li{
+	margin-top:10px;
+}
+
+.cuxiao>ul>li:hover{
+	color: #c81623;
+	cursor:pointer;
+}
+
+/*.service>ul {
+    border-top: 1px solid #e6e6e6;
+ }*/
+
+.service>ul>li{
+	float:left;
+    width: 47px;
+    height: 65px;
+    border-top: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+    text-align:center;
+    margin-left:-1px;
+}
+
+.service>ul>li>i{
+	width: 24px;
+	height: 24px;
+	background-image:url('../image/sprite_fs@1x.png');
+	display: block;
+	margin: 10px auto;
+	background-position: -1px -87px;
+}
+/*专题样式*/
+.zhuanti{
+	width: 1190px;
+	margin:10px auto 0;
+}
+
+.miaosha-head{
+	width: 100%;
+	background-image:url('../image/seckill_hd.png');
+	height: 55px;
+	line-height: 55px;
+}
+
+.miaosha-left{
+	float: left;
+	position: relative;
+}
+
+.miaosha-right{
+	float: right;
+	position: relative;
+	
+}
+
+.miaosha-icon{
+	background-image: url('../image/sprite_index@1x.png');
+}
+
+.miaosha-left>a,.miaosha-left>h3,.miaosha-left>i{
+	float: left;
+	color: #fff;
+}
+/*.miaosha-left>a,.miaosha-left>h3{
+	margin-left: 20px;
+}*/
+
+
+.miaosha-arrow{
+	position: absolute;
+	left:0;
+    top:0;
+    width: 20px;
+    height: 28px;
+    background-position:-195px -52px;
+    /*从整体左上角到图像左上角长195，高52*/
+}
+
+.miaosha-clock{
+	/*position: absolute;*//*此处不能用定位,否则后续文字将覆盖此图像*/
+	width: 34px;
+    height: 40px;
+    background-position:0 -40px;
+    margin-top:8px;
+    margin-left: 30px;
+    margin-right: 8px;
+}
+
+.miaosha-left>h3 {
+    font-family: fzzhengheis-el-gbregular;
+    font-weight:300;
+    font-size:26px;
+    margin-right:20px;
+}
+
+.miaosha-circle{
+	/*position: absolute;*//*此处不能用定位,否则后续文字将覆盖此图像*/
+	width: 22px;
+    height: 22px;
+    background-position:-154px -40px;
+    margin-top:20px;
+    margin-left: 5px;
+}
+
+.miaosha-right>span,.miaosha-right>i{
+	color: #fff;
+	font-size: 14px;
+	font-style:normal;
+	margin-left:10px;
+}
+
+/*.countdown{
+	background-image: url('../image/sprite_index@1x.png');
+	width: 22px;
+    height: 22px;
+    background-position:-154px -40px;
+}*/
+
+.miaosha-bottom>ul {
+    width: 100%;
+    height: 225px;
+    padding: 12px 0 13px;
+    background-color: #fff;
+
+}
+.miaosha-bottom>ul>li{
+	width: 170px;
+	height: 212px;
+	float: left;
+	padding:0 14px 0 15px;
+	border-right: 1px solid #e7e7e7;
+	text-align: center;/**文本对齐方式：居中**/
+	position: relative;
+}
+
+.goods-info{
+	font-style:normal;
+	height: 32px;
+	line-height: 16px;
+	margin-top: 10px;
+    color: #999;
+    position: relative;
+    
+}
+.goods-hidden{
+	display: none;
+	background-color: #fff;
+	position: absolute;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.goods-hover:hover .goods-hidden{
+	display: block;
+	
+/*hover后显示的标签，若同属于一个div，则不用表明父元素。*/
+}
+
+.goods-price{
+	margin-top: 10px;
+}
+.goods-red-txt{
+	color:#f10214;
+}
+
+.goods-red-txt>span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.goods-delete {
+    color: #999;
+    margin-left: 10px;
+}
+
+
+.goods-icon{
+	position: absolute;
+    width: 170px;
+    height: 20px;
+    top: 110px;
+    margin-left: -85px;
+    left: 50%;
+}
+
+/**1.导航栏跳转ID 2.js 3.jq 
