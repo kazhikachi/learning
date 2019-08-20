@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>账户注册|京东</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../image/favicon.ico">
+    <link rel="stylesheet" href="../css/reg.css">
+    
+    
+</head>
+<body>
+    <div class="header">
+        <div class="logo-con w clearfix">
+            <a href="../index.html" class="logo ">
+            </a>
+            <div class="logo-title">欢迎注册</div>
+
+            <div class="have-account">已有账号？ <a href="loading.html">请登录&gt;</a></div>
+
+        </div>
+    </div>
+    <div class="register">
+        <div class="title">
+            <span class="current">注&nbsp;&nbsp;册</span>
+        </div>
+        <div class="form">
+            <div>
+                <span>+86</span>
+                <input type="text" name="user" id="user" placeholder="请输入手机号" autocomplete="off" maxlength="11"/>
+                <i id="user_icon"></i>
+                <p class="info" id="user_info"></p>
+            </div>
+            <div>
+                <input type="password" name="pwd" id="pwd" placeholder="请设置密码" maxlength="12">
+                <i id="passwordeye" class="invisible" onclick="showhide()"></i>
+                <i id="pwd_icon"></i>
+                <p class="info" id="pwd_info"></p>
+            </div>
+            <p class="button">
+                <a href="####" id="sigup-btn" class="btn">注册</a>
+            </p>
+        </div>
+        <div >
+            <a class="feedback" href="#"></a>
+        </div>
+    </div>
+    <div class="bottom">
+        <div>
+            <div class="links">
+                <a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx"> 关于我们</a>|
+                <a rel="nofollow" target="_blank" href="//www.jd.com/contact/">联系我们</a>|
+                <a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">人才招聘</a>|
+                <a rel="nofollow" target="_blank" href="//www.jd.com/contact/joinin.aspx">商家入驻</a>|
+                <a rel="no  follow" target="_blank" href="//www.jd.com/intro/service.aspx">广告服务</a>|
+                <a rel="nofollow" target="_blank" href="//app.jd.com/">手机京东</a>|
+                <a target="_blank" href="//club.jd.com/links.aspx">友情链接</a>|
+                <a target="_blank" href="//media.jd.com">销售联盟</a>|
+                <a href="//club.jd.com/" target="_blank">京东社区</a>|
+                <a href="//gongyi.jd.com" target="_blank">京东公益</a>|
+                <a target="_blank" href="//en.jd.com/" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+            </div>	
+        </div>
+        <div>
+            <div class="copyright">
+                Copyright©2004-2019&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+            </div>
+        </div>
+	
+    </div>
+    
+       
+       
+   
+
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript">                             //获取id
+        var user=document.getElementById("user"),
+            pwd=document.getElementById("pwd"),
+            sigup=document.getElementById("sigup-btn"),
+            userInfo=document.getElementById("user_info"),
+            userIcon=document.getElementById("user_icon"),
+            pwdInfo=document.getElementById("pwd_info"),
+            pwdIcon=document.getElementById("pwd_icon")
+            userReg=/^1[3578]\d{9}$/                           //正则表达式，验证手机号是否有效。以1开头，第二位是3、5、7或8，号码总位数为9
+            pwdReg=/^\w{6,12}$/                                //总位数6-12位，\w 匹配字母或数字或下划线或汉字,等价于 '[^A-Za-z0-9_]'
+            isRepeat=false                                     //记录用户名是否被占用，默认false
+        //检测用户
+        function checkUser(){
+            var userVal=user.value;                                      
+            if(userReg.test(userVal)){                         //test检测,如果userVal的值与userReg不相同，即意味着号码不合法
+                userIcon.className='ok';
+            //向服务器发送请求   
+            $.ajax({
+            url:'http://localhost/register/server/isUserRepeat.php',    //此文件判断用户名是否可用
+            data:{username:userVal},
+            method:"post",                              //如果没有标明post方式，则会提示参数有误。
+            success:function(data){          
+                if(data.code==1){
+                    userIcon.className='ok'; 
+                    userInfo.innerHTML='';
+                    isRepeat=false;                         
+                }else if(data.code==0){
+                    userIcon.className='no';
+                    userInfo.innerHTML=data.msg;
+                    isRepeat=true;                              
+                }else{
+                    userInfo.innerHTML='检测失败，请重试';
+                }                      
+            }
+        })
+            }else if(userVal=="") {
+                userInfo.innerHTML='';               
+                userIcon.className='';
+            }else{
+                userInfo.innerHTML='手机号码无效!'               //则innerHTML显示为号码无效
+                userIcon.className='no';
+            }
+        }
+        //检测密码
+        function checkPwd(){
+            var pwdVal=pwd.value;                
+            if(pwdReg.test(pwdVal)){                           //test检测,如果Val的值与Reg相同，即意味着合法
+                pwdInfo.innerHTML=''     
+                pwdIcon.className='ok'
+            }else if(pwdVal==""){
+                pwdInfo.innerHTML='';               
+                pwdIcon.className='';
+            }else{
+                pwdInfo.innerHTML='请输入6-12位的字母、数字或下划线'      //则innerHTML显示为无效
+                pwdIcon.className='no';
+            }
+
+        }
+        //确认注册
+        function register(){
+            var user_val=user.value,
+                pwd_val=pwd.value
+            //如果手机号没有被占用，同时密码合法，方可注册
+            if(userReg.test(user_val) && pwdReg.test(pwd_val) && !isRepeat){    //
+                //发起请求，实现注册
+                $.ajax({
+                    url:'http://localhost/register/server/register.php',    //此文件用来记录注册过的账户
+                    method:"post",
+                    data:{username:user_val,userpwd:pwd_val},
+                    success:function(data){
+                        alert("注册成功！请登录")
+                        user.value="";
+                        pwd.value="";
+                        pwdIcon.className='';
+                        userIcon.className='';
+                    },
+                    error:function(){
+                        pwdInfo.innerHTML='注册失败，请重试！';
+                    }
+                })
+            }
+        }
+       
+        //显示隐藏对应的switchPwd()方法: 
+        var passwordeye =document.getElementById("passwordeye");
+             var showPwd =document.getElementById("pwd"); 
+        
+                                 
+            function showhide(){
+
+            if (showPwd.type == "password") {
+                showPwd.type = "text";
+                passwordeye.className='visible'
+            }else {
+                showPwd.type = "password";
+                passwordeye.className='invisible'
+                }
+            }
+  
+    
+        
+    
+        
+        //绑定事件，检测用户的有效性及是否注册过    
+            user.addEventListener("blur",checkUser,false);      //blur失去焦点，当输入框不再激活时，向服务器传送手机号
+        //绑定事件，检测密码的有效性    
+            pwd.addEventListener("blur",checkPwd,false);        //默认false，事件在冒泡阶段执行。true是在捕获阶段执行。
+        //注册
+            sigup.addEventListener("click",register,false);
+    </script>
+</body>
+</html>
